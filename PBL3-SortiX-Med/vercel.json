@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd SortiX-Dashboard && npm run build",
+  "outputDirectory": "SortiX-Dashboard/frontend/.next",
+  "framework": "nextjs"
+}

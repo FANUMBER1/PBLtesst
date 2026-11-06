@@ -1,0 +1,59 @@
+{
+  "name": "sortix-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  
+  
+
+  "scripts": {
+    "predev": "node scripts/free-port.cjs 3000",
+    "free-port": "node scripts/free-port.cjs 3000",
+
+"dev": "concurrently --kill-others-on-fail -n APP,AI \"npm:dev:all\" \"npm:dev:ai\"",
+"dev:ai": ".\\ai-server\\.venv\\Scripts\\python.exe .\\ai-server\\detect_iphone.py",
+    "dev:all": "node scripts/dev-all.cjs",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+
+    "build": "npm run build --workspace=frontend",
+    "start": "npm run start --workspace=frontend",
+    "lint": "npm run lint --workspace=frontend",
+    "cap:sync": "npm run cap:sync --workspace=frontend",
+    "cap:open": "npm run cap:open --workspace=frontend",
+    "test:e2e": "node scripts/e2e.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "dev:telegram": "node scripts/telegram-poller.cjs"
+  }
+
+,
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "lucide-react": "^0.441.0",
+    "mqtt": "^5.10.1",
+    "next": "14.2.15",
+    "nodemailer": "^6.9.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.13.0",
+    "zod": "^4.6.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.16.5",
+    "@types/nodemailer": "^6.4.16",
+    "@types/react": "^18.3.8",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^10.0.6",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.15",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.12",
+    "typescript": "^5.6.2"
+  }
+}

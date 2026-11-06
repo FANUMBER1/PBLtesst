@@ -1,0 +1,63 @@
+[
+  {
+    "event": "device_offline",
+    "severity": "error",
+    "station_id": "ESP32_MAIN_CONTROLLER",
+    "triggered_by": "HEARTBEAT_WATCHDOG",
+    "description": "[MẤT KẾT NỐI THIẾT BỊ] Vi điều khiển trung tâm (ESP32) đã ngoại tuyến! Dữ liệu cảm biến thời gian thực bị ngắt",
+    "timestamp": "2026-11-04T14:44:37.455Z",
+    "mode": "realtime",
+    "status": "unprocessed",
+    "id": "notif_1793803477457_md86e"
+  },
+  {
+    "event": "device_offline",
+    "severity": "error",
+    "station_id": "ESP32_MAIN_CONTROLLER",
+    "triggered_by": "HEARTBEAT_WATCHDOG",
+    "description": "[MẤT KẾT NỐI THIẾT BỊ] Vi điều khiển trung tâm (ESP32) đã ngoại tuyến! Dữ liệu cảm biến thời gian thực bị ngắt",
+    "timestamp": "2026-11-04T14:44:32.455Z",
+    "mode": "realtime",
+    "status": "unprocessed",
+    "id": "notif_1793803472471_lz0sq"
+  },
+  {
+    "event": "emergency_stop",
+    "severity": "critical",
+    "station_id": "STATION_01",
+    "triggered_by": "Physical E-Stop Button #1",
+    "description": "[NGUY HIỂM] NÚT DỪNG KHẨN CẤP ĐÃ ĐƯỢC KÍCH HOẠT TẠI TRẠM 01! BĂNG CHUYỀN ĐÃ NGẮT TOÀN BỘ.",
+    "timestamp": "2026-10-24T01:53:25.589Z",
+    "mode": "simulation",
+    "status": "resolved",
+    "id": "notif_1792806806635_59akf",
+    "resolved_at": "2026-10-24T01:53:31.482Z",
+    "resolved_by": "admin1"
+  },
+  {
+    "event": "emergency_stop",
+    "severity": "critical",
+    "station_id": "STATION_01",
+    "triggered_by": "Physical E-Stop Button #1",
+    "description": "[NGUY HIỂM] NÚT DỪNG KHẨN CẤP ĐÃ ĐƯỢC KÍCH HOẠT TẠI TRẠM 01! BĂNG CHUYỀN ĐÃ NGẮT TOÀN BỘ.",
+    "timestamp": "2026-09-18T10:15:30.000Z",
+    "mode": "realtime",
+    "status": "resolved",
+    "id": "notif_1792806750336_0cy2q",
+    "resolved_at": "2026-10-24T01:52:30.337Z",
+    "resolved_by": "admin1"
+  },
+  {
+    "event": "emergency_stop",
+    "severity": "critical",
+    "station_id": "STATION_01",
+    "triggered_by": "Physical E-Stop Button #1",
+    "description": "[NGUY HIỂM] NÚT DỪNG KHẨN CẤP ĐÃ ĐƯỢC KÍCH HOẠT TẠI TRẠM 01! BĂNG CHUYỀN ĐÃ NGẮT TOÀN BỘ.",
+    "timestamp": "2026-09-18T10:15:30.000Z",
+    "mode": "realtime",
+    "status": "resolved",
+    "id": "notif_1792806750323_ch0xp",
+    "resolved_at": "2026-10-24T01:52:30.335Z",
+    "resolved_by": "admin1"
+  }
+]

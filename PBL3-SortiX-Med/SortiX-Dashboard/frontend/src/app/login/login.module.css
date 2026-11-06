@@ -1,0 +1,760 @@
+/* ==========================================================================
+   SORTIX-MED LOGIN / AUTHENTICATION PAGE STYLES
+   - Aesthetic: Authentic, prestigious Biomedical & Engineering Laboratory
+   - Typography: Clean Modern Sans-Serif (Instagram / System UI)
+   - Layout: Exactly fit screen height (100vh / 100dvh) with NO vertical scrolling
+   - Clean, human-designed look (not generic AI cyber neon)
+   ========================================================================== */
+
+.page {
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(460px, 46%) 1fr;
+  background: #ffffff;
+  color: #0f172a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+.page button,
+.page input,
+.page summary {
+  -webkit-tap-highlight-color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+.page button {
+  cursor: pointer;
+}
+
+.page button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.page :is(button, summary, a, input):focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   LEFT PANEL - AUTHENTICATION FORM
+   ========================================================================== */
+
+.formPanel {
+  height: 100%;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(14px, 2.2vh, 26px) clamp(24px, 3.8vw, 44px);
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  position: relative;
+  z-index: 10;
+}
+
+/* Brand Header */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.brandIcon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #dbeafe;
+}
+
+.brandName {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #0f172a;
+}
+
+.brandName span {
+  color: #1d4ed8;
+  padding: 0 1px;
+}
+
+.brand p {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #64748b;
+  margin: 1px 0 0;
+  text-transform: uppercase;
+}
+
+.projectBadge {
+  margin-left: auto;
+  color: #1d4ed8;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* Form Container */
+.formContent {
+  width: 100%;
+  max-width: 475px;
+  margin: auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #1d4ed8;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+}
+
+.eyebrow span {
+  width: 6px;
+  height: 6px;
+  background: #1d4ed8;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.formContent h1 {
+  font-size: clamp(25px, 2.6vw, 32px);
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: #0f172a;
+  margin: 0 0 6px;
+  text-align: center;
+}
+
+.intro {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #475569;
+  margin: 0 auto 16px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Mode Switcher Tabs */
+.modeSwitch {
+  display: flex;
+  padding: 4px;
+  border-radius: 7px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.modeSwitch button {
+  width: 50%;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+  border: none;
+  background: transparent;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.modeSwitch button[aria-pressed="true"] {
+  color: #0f172a;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.modeSwitch button:hover:not([aria-pressed="true"]) {
+  color: #1d4ed8;
+}
+
+/* Alert notifications */
+.error,
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  border: 1px solid;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.error svg,
+.notice svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.error {
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.notice {
+  color: #1e40af;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+/* Form & Inputs */
+.form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.field label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.field input {
+  width: 100%;
+  height: 42px;
+  min-height: 42px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  border-radius: 6px;
+  padding: 8px 13px;
+  font-size: 15px;
+  line-height: 1.35;
+  color: #0f172a;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.field input::placeholder {
+  color: #94a3b8;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.field input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.14);
+}
+
+.field input[aria-invalid="true"] {
+  border-color: #dc2626;
+  background: #fffafa;
+}
+
+.field input.passwordInput {
+  padding-right: 42px;
+}
+
+.reveal {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: #64748b;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+}
+
+.reveal:hover {
+  color: #1d4ed8;
+}
+
+.hint,
+.fieldError {
+  font-size: 11.5px;
+  line-height: 1.35;
+  margin-top: 3px;
+}
+
+.hint {
+  color: #64748b;
+}
+
+.fieldError {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.formUtilities {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -2px;
+  font-size: 12.5px;
+}
+
+.formUtilities button {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1d4ed8;
+  border: none;
+  background: transparent;
+  padding: 2px 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.formUtilities button:hover {
+  color: #1e40af;
+}
+
+.capsHint {
+  font-size: 12px;
+  font-weight: 700;
+  color: #b45309;
+}
+
+/* Submit Button */
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  min-height: 44px;
+  width: 100%;
+  border-radius: 6px;
+  background: #1d4ed8;
+  color: #ffffff;
+  font-size: 15.5px;
+  font-weight: 700;
+  border: 1px solid #1e3a8a;
+  box-shadow: 0 2px 6px rgba(15, 118, 110, 0.22);
+  transition: background 0.15s ease, transform 0.1s ease;
+  margin-top: 4px;
+}
+
+.submit:hover:not(:disabled) {
+  background: #1e40af;
+}
+
+.submit:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Password tips in register */
+.passwordTips {
+  font-size: 11px;
+  color: #475569;
+  margin-top: -3px;
+}
+
+.passwordTips p {
+  margin: 0 0 3px;
+  font-weight: 600;
+}
+
+.passwordTips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.passwordTips li {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.passwordTips li[data-met="true"] {
+  color: #1e40af;
+  font-weight: 700;
+}
+
+.roleNote {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #334155;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 6px 9px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.roleNote svg {
+  flex-shrink: 0;
+  color: #1d4ed8;
+}
+
+/* Demo box */
+.demo {
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  border-radius: 6px;
+  margin-top: 9px;
+  padding: 0 9px;
+  color: #475569;
+}
+
+.demo summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 31px;
+  font-size: 11.5px;
+  font-weight: 700;
+  list-style: none;
+}
+
+.demo summary::-webkit-details-marker {
+  display: none;
+}
+
+.demo summary span {
+  margin-left: auto;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.demo p {
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 0 0 6px;
+}
+
+.demo > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 6px 0 8px;
+}
+
+.demo button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 29px;
+  padding: 4px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1e293b;
+  transition: all 0.15s ease;
+}
+
+.demo button:hover {
+  background: #f1f5f9;
+  border-color: #1d4ed8;
+  color: #1d4ed8;
+}
+
+.accessNote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 9px;
+  color: #64748b;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   RIGHT PANEL - AUTHENTIC ENGINEERING SHOWCASE
+   ========================================================================== */
+
+.showcase {
+  height: 100%;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(14px, 2.2vh, 24px) clamp(20px, 2.8vw, 36px);
+  background: linear-gradient(160deg, #f8fafc 0%, #edf2f7 50%, #e2e8f0 100%);
+  color: #0f172a;
+  position: relative;
+  border-left: 1px solid #e2e8f0;
+}
+
+/* Top bar */
+.showcaseTop {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #475569;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.showcaseTop {
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 8px;
+}
+
+.showcaseTop > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #0f172a;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+}
+
+/* Center Showcase Content */
+.showcaseContent {
+  position: relative;
+  max-width: 840px;
+  margin: auto;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6px 0;
+}
+
+.showcaseContent h2 {
+  color: #0f172a;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+/* Hero Image Card - Large & Prominent */
+.hero {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1), 0 2px 6px rgba(15, 23, 42, 0.04);
+  margin: 2px 0 0;
+}
+
+.heroImage {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: clamp(360px, 66vh, 680px);
+}
+
+.photo {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.imageLabel {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 4px;
+  padding: 5px 9px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  border: 1px solid #cbd5e1;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #0369a1;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Utilities */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.skipLink {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  transform: translateY(-150%);
+  z-index: 60;
+  padding: 10px;
+  background: #ffffff;
+  color: #1d4ed8;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+  .page {
+    display: block;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    background: #f8fafc;
+  }
+
+  .showcase {
+    display: none;
+  }
+
+  .formPanel {
+    min-height: 100dvh;
+    max-height: none;
+    max-width: 580px;
+    margin: 0 auto;
+    border-right: none;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow-y: visible;
+  }
+
+  .formContent {
+    padding: 24px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

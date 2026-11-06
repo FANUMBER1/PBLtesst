@@ -1,0 +1,101 @@
+[
+  {
+    "id": "sim_1792806968179_314e",
+    "product_id": "#9",
+    "brand_id": "med_syringe",
+    "brand_name": "Bơm kim tiêm / Dao mổ",
+    "confidence": 0.9712444970956059,
+    "target_bin": 1,
+    "actual_bin": 1,
+    "status": "success",
+    "timestamp": "2026-10-24T01:56:08.179Z"
+  },
+  {
+    "id": "sim_1792806968051_493a",
+    "product_id": "#8",
+    "brand_id": "med_syringe",
+    "brand_name": "Bơm kim tiêm / Dao mổ",
+    "confidence": 0.9541879599259117,
+    "target_bin": 1,
+    "actual_bin": 1,
+    "status": "success",
+    "timestamp": "2026-10-24T01:56:08.051Z"
+  },
+  {
+    "id": "sim_1792806967881_4abf",
+    "product_id": "#7",
+    "brand_id": "med_syringe",
+    "brand_name": "Bơm kim tiêm / Dao mổ",
+    "confidence": 0.94934668566013,
+    "target_bin": 1,
+    "actual_bin": 1,
+    "status": "success",
+    "timestamp": "2026-10-24T01:56:07.881Z"
+  },
+  {
+    "id": "sim_1792806967716_9c7c",
+    "product_id": "#6",
+    "brand_id": "med_syringe",
+    "brand_name": "Bơm kim tiêm / Dao mổ",
+    "confidence": 0.9762552934351507,
+    "target_bin": 1,
+    "actual_bin": 1,
+    "status": "success",
+    "timestamp": "2026-10-24T01:56:07.716Z"
+  },
+  {
+    "id": "sim_1792806967566_6a90",
+    "product_id": "#5",
+    "brand_id": "med_syringe",
+    "brand_name": "Bơm kim tiêm / Dao mổ",
+    "confidence": 0.9530096050198533,
+    "target_bin": 1,
+    "actual_bin": 1,
+    "status": "success",
+    "timestamp": "2026-10-24T01:56:07.566Z"
+  },
+  {
+    "id": "sim_1792806967406_be07",
+    "product_id": "#4",
+    "brand_id": "med_syringe",
+    "brand_name": "Bơm kim tiêm / Dao mổ",
+    "confidence": 0.9511551742043123,
+    "target_bin": 1,
+    "actual_bin": 1,
+    "status": "success",
+    "timestamp": "2026-10-24T01:56:07.406Z"
+  },
+  {
+    "id": "sim_1792806967232_54e2",
+    "product_id": "#3",
+    "brand_id": "med_syringe",
+    "brand_name": "Bơm kim tiêm / Dao mổ",
+    "confidence": 0.960328960175217,
+    "target_bin": 1,
+    "actual_bin": 1,
+    "status": "success",
+    "timestamp": "2026-10-24T01:56:07.232Z"
+  },
+  {
+    "id": "sim_1792806967066_a1a4",
+    "product_id": "#2",
+    "brand_id": "med_syringe",
+    "brand_name": "Bơm kim tiêm / Dao mổ",
+    "confidence": 0.9511831955298906,
+    "target_bin": 1,
+    "actual_bin": 1,
+    "status": "success",
+    "timestamp": "2026-10-24T01:56:07.066Z"
+  },
+  {
+    "id": "sim_1792806966912_e2b0",
+    "product_id": "#1",
+    "brand_id": "med_syringe",
+    "brand_name": "Bơm kim tiêm / Dao mổ",
+    "confidence": 0.9609549262936822,
+    "target_bin": 1,
+    "actual_bin": 1,
+    "status": "success",
+    "timestamp": "2026-10-24T01:56:06.912Z"
+  }
+]

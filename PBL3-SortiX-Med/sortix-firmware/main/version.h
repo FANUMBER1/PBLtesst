@@ -1,0 +1,8 @@
+#pragma once
+
+#define SORTIX_FW_VERSION_MAJOR   1
+#define SORTIX_FW_VERSION_MINOR   0
+#define SORTIX_FW_VERSION_PATCH   0
+#define SORTIX_FW_VERSION_STRING  "1.0.0"
+#define SORTIX_TARGET_CHIP        "ESP32-C5"
+#define SORTIX_BOARD_NAME         "WeAct Studio ESP32-C5-A-N8R8"

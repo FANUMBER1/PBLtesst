@@ -1,0 +1,38 @@
+menu "SortiX Firmware Configuration"
+
+    config SORTIX_DEVICE_ID
+        string "SortiX Device ID"
+        default "sorter_01"
+        help
+            Unique ID of this sorter device on MQTT and Dashboard.
+
+    config SORTIX_WIFI_SSID
+        string "Default WiFi SSID (leave empty to provision through setup AP)"
+        default ""
+
+    config SORTIX_WIFI_PASSWORD
+        string "Default WiFi Password (leave empty for an open WiFi network)"
+        default ""
+
+    config SORTIX_MQTT_BROKER_URI
+        string "MQTTS/WSS Broker URI"
+        default ""
+
+    config SORTIX_HTTP_TELEMETRY_URL
+        string "HTTPS Telemetry URL"
+        default ""
+
+    choice SORTIX_FALLBACK_POLICY_CHOICE
+        prompt "Fallback policy on Vision AI timeout / MQTT disconnect"
+        default SORTIX_FALLBACK_POLICY_PAUSE
+        help
+            Safety policy when items are on the line and vision results are missing.
+
+        config SORTIX_FALLBACK_POLICY_PAUSE
+            bool "Pause and Hold (Emergency stop conveyor to protect medical items)"
+
+        config SORTIX_FALLBACK_POLICY_DIVERT
+            bool "Divert to Default (Let item pass to Bin 3)"
+    endchoice
+
+endmenu

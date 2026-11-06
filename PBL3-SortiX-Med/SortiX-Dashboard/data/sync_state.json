@@ -1,0 +1,49 @@
+{
+  "mode": "real",
+  "isRunning": true,
+  "speed": 50,
+  "binCounts": {
+    "bin1": 9,
+    "bin2": 0,
+    "bin3": 0
+  },
+  "binCapacities": {
+    "bin1": 50,
+    "bin2": 50,
+    "bin3": 50
+  },
+  "brandCounts": {
+    "med_syringe": 9,
+    "med_forceps": 0,
+    "med_scissors": 0,
+    "med_vial": 0,
+    "brand_c": 0,
+    "brand_a": 0,
+    "brand_b": 0,
+    "brand_d": 0
+  },
+  "config": {
+    "schema_version": 1,
+    "config_version": 5,
+    "device_id": "sorter_01",
+    "catalog_version": "catalog_01",
+    "bins": [
+      {
+        "bin_id": 1,
+        "brand_ids": [
+          "med_scissors"
+        ]
+      },
+      {
+        "bin_id": 2,
+        "brand_ids": [
+          "med_vial"
+        ]
+      }
+    ],
+    "default_bin": 3,
+    "apply_mode": "when_line_empty",
+    "timestamp": "2026-10-03T06:40:39.900Z"
+  },
+  "updatedAt": "2026-11-04T14:45:10.408Z"
+}

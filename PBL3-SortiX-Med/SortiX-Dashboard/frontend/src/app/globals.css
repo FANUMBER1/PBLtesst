@@ -1,0 +1,425 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 7%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* ========================================================
+   CHẾ ĐỘ TỐI (DARK MODE - RELATE STUDIO / MICRODOSE DASHBOARD)
+   ======================================================== */
+.dark body,
+html.dark {
+  color: #f8fafc;
+  background-color: #0D0F12;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.02) 0px, transparent 40%),
+    radial-gradient(at 100% 100%, rgba(255, 255, 255, 0.015) 0px, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* ========================================================
+   CHẾ ĐỘ SÁNG (LIGHT MODE - SAAS CLEAN PORCELAIN)
+   ======================================================== */
+.light body,
+html.light {
+  color: #0f172a;
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.03) 0px, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.02) 0px, transparent 45%);
+  background-attachment: fixed;
+}
+
+/* ========================================================
+   HIỆU ỨNG GƯƠNG KÍNH RELATE STUDIO (.relate-card & .glass-mirror-card)
+   ======================================================== */
+.relate-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem; /* rounded-2xl (16px) */
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.28s ease;
+}
+
+/* Lớp phủ phản quang chéo mờ ảo (specular reflection sheen) */
+.relate-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 45%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.04) 55%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 10;
+  transition: none;
+}
+
+.light .relate-card::before {
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 45%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.4) 55%,
+    transparent 100%
+  );
+}
+
+.relate-card:hover::before {
+  left: 170%;
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark Mode Thẻ Relate */
+.dark .relate-card {
+  background-color: #161822;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.dark .relate-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: linear-gradient(115deg, #161822 0%, #1c1f2e 50%, #161822 100%);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Light Mode Thẻ Relate */
+.light .relate-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.light .relate-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(148, 163, 184, 0.6);
+  box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+}
+
+/* ========================================================
+   HIỆU ỨNG VẬT LÝ BĂNG CHUYỀN 2D ĐỒNG BỘ INDUSTRIAL DIGITAL TWIN
+   ======================================================== */
+
+/* Khung bệ đỡ cơ khí hợp kim nhôm định hình (Chassis & Rails) */
+.dark .conveyor-chassis {
+  background: linear-gradient(180deg, #141622 0%, #0d0f17 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 2px 12px rgba(0, 0, 0, 0.7), 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.light .conveyor-chassis {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #cbd5e1;
+  box-shadow: inset 0 1px 0 #ffffff, inset 0 2px 6px rgba(15, 23, 42, 0.05), 0 6px 20px rgba(15, 23, 42, 0.06);
+}
+
+/* Thanh ray trượt mạ crom sáng bóng có thước đo milimet công nghiệp */
+.chrome-rail-ruler {
+  position: relative;
+  height: 18px;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    #e2e8f0 0%,
+    #cbd5e1 35%,
+    #94a3b8 50%,
+    #f8fafc 65%,
+    #64748b 100%
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid #475569;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 2px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.dark .chrome-rail-ruler {
+  background: linear-gradient(
+    180deg,
+    #475569 0%,
+    #334155 35%,
+    #1e293b 50%,
+    #64748b 65%,
+    #0f172a 100%
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid #0f172a;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Vạch đo milimet công nghiệp sắc nét */
+.ruler-ticks {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.7) 0px,
+    rgba(15, 23, 42, 0.7) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+.dark .ruler-ticks {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.4) 0px,
+    rgba(255, 255, 255, 0.4) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+/* Mặt dây đai cao su / mắt xích modul công nghiệp (12px micro-ribbed pitch) */
+.dark .conveyor-belt-track {
+  background-color: #0c1017;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #0a0d14 0px,
+    #0a0d14 9px,
+    #182030 9px,
+    #232e45 10.5px,
+    #0a0d14 12px
+  );
+  background-size: 12px 100%;
+}
+
+.light .conveyor-belt-track {
+  background-color: #1e293b;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #1e293b 0px,
+    #1e293b 9px,
+    #334155 9px,
+    #475569 10.5px,
+    #1e293b 12px
+  );
+  background-size: 12px 100%;
+}
+
+.conveyor-belt-running {
+  animation: beltMicroRibsMove 0.4s linear infinite;
+}
+
+@keyframes beltMicroRibsMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 12px 0;
+  }
+}
+
+/* Rulo con lăn 2 đầu quay tròn đều */
+.roller-rotating {
+  animation: rotateRoller 0.8s linear infinite;
+}
+
+@keyframes rotateRoller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================================
+   VẬT MẪU 2D DIGITAL TWIN TRÊN BĂNG TẢI DỤNG CỤ Y TẾ SORTIX-MED
+   ======================================================== */
+.product-sample-3d {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  will-change: left, top, transform, opacity;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Bơm kim tiêm / Dao mổ */
+.sample-syringe {
+  filter: drop-shadow(0 6px 12px rgba(234, 179, 8, 0.35));
+}
+
+/* Kẹp phẫu thuật (Pean) */
+.sample-forceps {
+  filter: drop-shadow(0 6px 12px rgba(2, 132, 199, 0.35));
+}
+
+/* Kéo phẫu thuật */
+.sample-scissors {
+  filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.35));
+}
+
+/* Lọ thuốc / Ống nghiệm */
+.sample-vial {
+  filter: drop-shadow(0 6px 12px rgba(16, 185, 129, 0.35));
+}
+
+/* Lon Coca-Cola: Đỏ ruby ánh kim */
+.sample-coca {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 35%, #991b1b 75%, #7f1d1d 100%);
+  border: 1px solid rgba(254, 202, 202, 0.6);
+  box-shadow: 0 8px 18px -2px rgba(0, 0, 0, 0.6), 0 0 14px rgba(220, 38, 38, 0.45);
+}
+
+/* Lon Pepsi: Xanh cobalt ánh kim */
+.sample-pepsi {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 35%, #1d4ed8 75%, #172554 100%);
+  border: 1px solid rgba(191, 219, 254, 0.6);
+  box-shadow: 0 8px 18px -2px rgba(0, 0, 0, 0.6), 0 0 14px rgba(37, 99, 235, 0.45);
+}
+
+/* Lon Red Bull: Phối vàng gold & xanh navy */
+.sample-redbull {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 45%, #1e3a8a 52%, #172554 100%);
+  border: 1px solid rgba(253, 230, 138, 0.7);
+  box-shadow: 0 8px 18px -2px rgba(0, 0, 0, 0.6), 0 0 14px rgba(217, 119, 6, 0.45);
+}
+
+/* Chai Aquafina: Nhựa trong suốt có khúc xạ */
+.sample-aquafina {
+  background: linear-gradient(135deg, rgba(224, 242, 254, 0.9) 0%, rgba(186, 230, 253, 0.75) 40%, rgba(56, 189, 248, 0.7) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 18px -2px rgba(0, 0, 0, 0.5), 0 0 14px rgba(2, 132, 199, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+/* Nắp kim loại dập nổi lon nước ngọt */
+.can-top-rim {
+  background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 40%, #94a3b8 100%);
+  border-radius: 9999px;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Chùm tia Laser Ma Trận Hình Nón Ngược (Holographic Cone) */
+.holographic-scan-cone {
+  background: linear-gradient(
+    180deg,
+    rgba(6, 182, 212, 0) 0%,
+    rgba(6, 182, 212, 0.15) 20%,
+    rgba(14, 165, 233, 0.35) 70%,
+    rgba(6, 182, 212, 0.85) 100%
+  );
+  clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+  box-shadow: 0 0 24px rgba(6, 182, 212, 0.5);
+}
+
+.laser-scan-line {
+  animation: scanLineVertical 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes scanLineVertical {
+  0% {
+    top: 8%;
+    opacity: 0.3;
+    transform: scaleX(0.7);
+  }
+  50% {
+    opacity: 0.95;
+  }
+  100% {
+    top: 92%;
+    opacity: 0.4;
+    transform: scaleX(1);
+  }
+}
+
+/* ========================================================
+   CHUYỂN CẢNH MƯỢT MÀ KHÔNG KHỰNG (GPU-ACCELERATED TRANSITIONS)
+   ======================================================== */
+.page-transition-enter {
+  animation: pageEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: pageEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade-in {
+  animation-name: pageEnter;
+}
+
+/* ========================================================
+   THANH CUỘN TÙY CHỈNH TINH TẾ (MICRO SCROLLBAR)
+   ======================================================== */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0ea5e9;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* ========================================================
+   HỖ TRỢ GIẢM CHUYỂN ĐỘNG (PREFERS-REDUCED-MOTION)
+   ======================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Đảm bảo độ tương phản cao cho chữ phụ trong chế độ sáng */
+.light .text-muted-foreground,
+.light .text-slate-400 {
+  color: #64748b;
+}
