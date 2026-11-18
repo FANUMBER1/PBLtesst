@@ -266,6 +266,19 @@ export const ConveyorToolbar: React.FC<ConveyorToolbarProps> = ({
 
                 <button
                   type="button"
+                  onClick={() => onSpawnPackage?.("med_cotton")}
+                  disabled={!isSimulation || !isRunning || telemetry.estop_pressed}
+                  className="flex items-center justify-center gap-1 rounded-lg border border-pink-300 bg-pink-50 px-2 py-1.5 text-[11px] font-bold text-pink-800 transition-all hover:bg-pink-100 dark:border-pink-500/40 dark:bg-pink-500/15 dark:text-pink-300 dark:hover:bg-pink-500/25 disabled:opacity-40 disabled:cursor-not-allowed shadow-2xs active:scale-95 cursor-pointer truncate"
+                  title={`Nạp Bông gòn (${getBrandTargetBinName("med_cotton")})`}
+                >
+                  <span className="truncate">Nạp Bông gòn</span>
+                  <span className="text-[9px] font-mono font-normal opacity-75 shrink-0">
+                    ({getBrandTargetBinName("med_cotton")})
+                  </span>
+                </button>
+
+                <button
+                  type="button"
                   onClick={() => onSpawnPackage?.()}
                   disabled={!isSimulation || !isRunning || telemetry.estop_pressed}
                   className="flex items-center justify-center gap-1 rounded-lg border border-slate-300 bg-slate-100 px-2 py-1.5 text-[11px] font-bold text-slate-700 transition-all hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed shadow-2xs active:scale-95 cursor-pointer truncate"

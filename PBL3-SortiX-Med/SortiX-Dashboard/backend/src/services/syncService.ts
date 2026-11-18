@@ -42,7 +42,7 @@ const DEFAULT_SYNC_CONFIG: SorterConfig = {
   catalog_version: "catalog_01",
   bins: [
     { bin_id: 1, brand_ids: ["med_syringe"] },
-    { bin_id: 2, brand_ids: ["med_forceps", "med_scissors"] },
+    { bin_id: 2, brand_ids: ["med_scissors"] },
   ],
   default_bin: 3,
   apply_mode: "when_line_empty",
@@ -77,8 +77,9 @@ function createDefaultSyncState(): DashboardSyncState {
     binCapacities: { bin1: 50, bin2: 50, bin3: 50 },
     brandCounts: {
       med_syringe: 0,
-      med_forceps: 0,
       med_scissors: 0,
+      med_cotton: 0,
+      med_forceps: 0,
       med_vial: 0,
     },
     config: DEFAULT_SYNC_CONFIG,
@@ -202,10 +203,11 @@ export const SyncService = {
       currentState.brandCounts = { ...currentState.brandCounts, ...validatedBrands };
     } else if (validatedRecords.length > 0) {
       const calculatedBrands: Record<string, number> = {
-        brand_c: 0,
-        brand_a: 0,
-        brand_b: 0,
-        brand_d: 0,
+        med_syringe: 0,
+        med_scissors: 0,
+        med_cotton: 0,
+        med_forceps: 0,
+        med_vial: 0,
       };
       const allRecords = HistoryModel.getAll();
       allRecords.forEach((r) => {
@@ -237,10 +239,11 @@ export const SyncService = {
     HistoryModel.clear();
     currentState.binCounts = { bin1: 0, bin2: 0, bin3: 0 };
     currentState.brandCounts = {
-      brand_c: 0,
-      brand_a: 0,
-      brand_b: 0,
-      brand_d: 0,
+      med_syringe: 0,
+      med_scissors: 0,
+      med_cotton: 0,
+      med_forceps: 0,
+      med_vial: 0,
     };
     currentState.updatedAt = new Date().toISOString();
     syncGlobal.sortixDashboardSyncState = currentState;

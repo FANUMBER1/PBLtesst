@@ -55,10 +55,10 @@ export const DEFAULT_INITIAL_CONFIG: SorterConfig = {
   device_id: "sorter_01",
   catalog_version: "catalog_01",
   bins: [
-    { bin_id: 1, brand_ids: ["med_syringe"] }, // Khay 1: Bơm kim tiêm / Dao mổ
-    { bin_id: 2, brand_ids: ["med_forceps", "med_scissors"] }, // Khay 2: Kẹp phẫu thuật & Kéo phẫu thuật
+    { bin_id: 1, brand_ids: ["med_syringe"] }, // Khay 1: Bơm kim tiêm
+    { bin_id: 2, brand_ids: ["med_scissors"] }, // Khay 2: Kéo phẫu thuật
   ],
-  default_bin: 3, // Khay 3: Mặc định (Vật tư y tế, Lọ thuốc / Ống nghiệm hoặc vật phẩm khác)
+  default_bin: 3, // Khay 3: Mặc định (Bông gòn / Gạc y tế & vật tư khác)
   apply_mode: "when_line_empty",
   timestamp: new Date().toISOString(),
 };

@@ -144,8 +144,9 @@ export function getBrandColorScheme(brandId?: string): BinColorScheme | null {
   const normalized = brandId.toLowerCase();
   if (normalized === "med_syringe" || normalized.includes("syringe") || normalized.includes("kim") || normalized.includes("dao")) return "amber";
   if (normalized === "med_forceps" || normalized.includes("forceps") || normalized.includes("panh") || normalized.includes("pean") || normalized.includes("kep")) return "blue";
-  if (normalized === "med_scissors" || normalized.includes("scissors") || normalized.includes("keo")) return "blue";
+  if (normalized === "med_scissors" || normalized.includes("scissor") || normalized.includes("keo")) return "blue";
   if (normalized === "med_vial" || normalized.includes("vial") || normalized.includes("tube") || normalized.includes("nghiem") || normalized.includes("thuoc")) return "cyan";
+  if (normalized === "med_cotton" || normalized.includes("cotton") || normalized.includes("bong") || normalized.includes("gac")) return "rose";
 
   // Legacy fallback mappings
   if (normalized === "brand_c" || normalized.includes("coca")) return "amber";

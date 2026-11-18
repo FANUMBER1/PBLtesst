@@ -1,10 +1,11 @@
-path: D:/Tài liệu quan trong/PBL/PBL3-SortiX-Med/SortiX-Dashboard/ai-server/dataset
+path: D:/PBL test/PBL3-SortiX-Med/SortiX-Dashboard/ai-server/dataset
 
 train: train/images
 val: valid/images
 test: test/images
 
-nc: 2
+nc: 3
 names:
-  0: HH
-  1: T
+  0: syringe
+  1: scissor
+  2: cotton

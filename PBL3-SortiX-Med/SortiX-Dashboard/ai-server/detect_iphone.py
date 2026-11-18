@@ -52,18 +52,38 @@ TOPIC_STATUS   = "sorter/sorter_01/status"
 # Khoang thoi gian toi thieu giua hai lan publish (giay)
 PUBLISH_INTERVAL = 0.5
 
+# Anh xa ten class YOLO (tu 3 bo dataset) sang brand_id cua SortiX Dashboard
+CLASS_TO_BRAND_ID = {
+    "syringe": "med_syringe",
+    "med_syringe": "med_syringe",
+    "scissor": "med_scissors",
+    "scissors": "med_scissors",
+    "med_scissors": "med_scissors",
+    "cotton": "med_cotton",
+    "med_cotton": "med_cotton",
+}
+
+
+def map_class_to_brand_id(class_name: str) -> str:
+    """Chuyen doi ten class YOLO thanh brand_id chuan cho SortiX Dashboard."""
+    normalized = str(class_name or "").strip().lower()
+    return CLASS_TO_BRAND_ID.get(normalized, normalized)
+
 # ==========================================
 # 3. TIM FILE BEST.PT
 # ==========================================
 
-from pathlib import Path
+RUN_3CLASS_BEST = BASE_DIR / "runs" / "sortix_med_3class" / "weights" / "best.pt"
+DEPLOY_BEST = BASE_DIR / "weights" / "best.pt"
 
-BASE_DIR = Path(__file__).resolve().parent
-
-MODEL_PATH = BASE_DIR / "weights" / "best.pt"
-
-CAMERA_INDEX = 1
-CAMERA_BACKEND = cv2.CAP_MSMF
+if RUN_3CLASS_BEST.exists() and (
+    not DEPLOY_BEST.exists() or RUN_3CLASS_BEST.stat().st_mtime >= DEPLOY_BEST.stat().st_mtime
+):
+    MODEL_PATH = RUN_3CLASS_BEST
+elif DEPLOY_BEST.exists():
+    MODEL_PATH = DEPLOY_BEST
+else:
+    MODEL_PATH = DEPLOY_BEST
 
 if not MODEL_PATH.exists():
 
@@ -177,29 +197,25 @@ def publish_vision(detections: list[dict]):
     """
     Gui ket qua nhan dien len MQTT topic sorter/sorter_01/vision.
 
-    Payload (JSON):
-    {
-        "timestamp": "2026-11-04T14:07:22Z",
-        "source": "ai_server",
-        "count": 2,
-        "detections": [
-            {"class_id": 0, "class_name": "med_scissors",
-             "confidence": 0.95, "bbox": [x1,y1,x2,y2]},
-            ...
-        ],
-        "top": {
-            "class_id": 0,
-            "class_name": "med_scissors",
-            "confidence": 0.95
-        }
-    }
+    Payload (JSON) gom ca truong o root (product_id, brand_id, class_name,
+    confidence, catalog_version, timestamp) de tuong thich cleanVisionPayload
+    cua Dashboard va detections/top cho MQTTX.
     """
-    if not mqtt_connected:
+    if not mqtt_connected or not detections:
         return
 
-    top = detections[0] if detections else None
+    top = max(detections, key=lambda item: float(item.get("confidence", 0.0)))
+    raw_class = str(top.get("class_name", "")).strip()
+    brand_id = map_class_to_brand_id(raw_class)
+    now_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
     payload = {
-        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "product_id": f"cam_{raw_class.lower() or 'item'}_{int(time.time() * 1000)}",
+        "brand_id": brand_id,
+        "class_name": raw_class,
+        "confidence": top["confidence"],
+        "catalog_version": "catalog_01",
+        "timestamp": now_iso,
         "source": "ai_server",
         "count": len(detections),
         "detections": detections,
@@ -217,6 +233,13 @@ model = YOLO(str(MODEL_PATH))
 
 print("Tai model thanh cong!")
 print("Danh sach classes:", model.names)
+
+loaded_classes = {str(v).strip().lower() for v in model.names.values()} if isinstance(model.names, dict) else set()
+expected_classes = {"syringe", "scissor", "cotton"}
+if not expected_classes.issubset(loaded_classes):
+    print("\n[!] CANH BAO: Trong so best.pt hien tai VAN LA MODEL CU:", model.names)
+    print("[!] Hay chay lenh sau trong thu muc ai-server de train model 3 lop moi:")
+    print("    .\\.venv\\Scripts\\python.exe train.py\n")
 
 # ==========================================
 # 7. KET NOI CAMERA IPHONE

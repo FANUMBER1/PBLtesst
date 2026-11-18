@@ -90,6 +90,11 @@ export function cleanTelemetryPayload(raw: unknown, prev: TelemetryData): Teleme
 
 export function normalizeBrandId(rawBrand: string): string {
   const lower = String(rawBrand || "").toLowerCase().trim();
+  if (lower === "syringe" || lower.includes("syringe") || lower === "med_syringe") return "med_syringe";
+  if (lower === "scissor" || lower === "scissors" || lower.includes("scissor") || lower === "med_scissors") return "med_scissors";
+  if (lower === "cotton" || lower.includes("cotton") || lower === "med_cotton") return "med_cotton";
+  if (lower === "forceps" || lower.includes("forceps") || lower === "med_forceps") return "med_forceps";
+  if (lower === "vial" || lower.includes("vial") || lower === "med_vial") return "med_vial";
   if (lower.includes("coca") || lower === "brand_c") return "brand_c";
   if (lower.includes("pepsi") || lower === "brand_a") return "brand_a";
   if (lower.includes("red") || lower.includes("bull") || lower === "brand_b") return "brand_b";
@@ -100,13 +105,21 @@ export function normalizeBrandId(rawBrand: string): string {
 export function cleanVisionPayload(raw: unknown): VisionDetection | null {
   if (!isRecord(raw)) return null;
 
-  const rawBrand = [raw.brand_id, raw.brand, raw.itemType, raw.item_type, raw.class_name]
-    .find((value): value is string => typeof value === "string" && value.trim().length > 0);
+  const topRecord = isRecord(raw.top) ? raw.top : null;
+  const rawBrand = [
+    raw.brand_id,
+    raw.brand,
+    raw.itemType,
+    raw.item_type,
+    raw.class_name,
+    topRecord?.brand_id,
+    topRecord?.class_name,
+  ].find((value): value is string => typeof value === "string" && value.trim().length > 0);
   if (!rawBrand) return null;
   const brandId = normalizeBrandId(rawBrand);
   if (!brandId) return null;
 
-  const confidenceValue = Number(raw.confidence ?? 0.95);
+  const confidenceValue = Number(raw.confidence ?? topRecord?.confidence ?? 0.95);
   if (!Number.isFinite(confidenceValue)) return null;
 
   const payload = {

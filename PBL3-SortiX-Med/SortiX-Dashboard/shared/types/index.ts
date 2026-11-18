@@ -81,6 +81,17 @@ export const CATALOG_BRANDS: Record<string, BrandInfo> = {
     packaging: "Thủy tinh borosilicate / Nhựa y tế",
     icon: "🧪",
   },
+  med_cotton: {
+    id: "med_cotton",
+    name: "Bông gòn / Gạc y tế",
+    code: "COTTON",
+    color: "#EC4899", // Hồng y tế #EC4899
+    badgeBg: "bg-pink-500/20",
+    borderColor: "border-pink-500/50",
+    textColor: "text-pink-600 dark:text-pink-400",
+    packaging: "Bông gòn / Băng gạc thấm dịch y tế",
+    icon: "🩹",
+  },
 };
 
 // Bí danh tương thích ngược (Backward-compatible legacy aliases)
@@ -89,6 +100,9 @@ Object.defineProperties(CATALOG_BRANDS, {
   brand_a: { get: () => CATALOG_BRANDS.med_forceps, enumerable: false, configurable: true },
   brand_b: { get: () => CATALOG_BRANDS.med_scissors, enumerable: false, configurable: true },
   brand_d: { get: () => CATALOG_BRANDS.med_vial, enumerable: false, configurable: true },
+  syringe: { get: () => CATALOG_BRANDS.med_syringe, enumerable: false, configurable: true },
+  scissor: { get: () => CATALOG_BRANDS.med_scissors, enumerable: false, configurable: true },
+  cotton: { get: () => CATALOG_BRANDS.med_cotton, enumerable: false, configurable: true },
 });
 
 export interface BinRule {

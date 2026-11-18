@@ -12,6 +12,7 @@ export const VisualItemRenderer: React.FC<VisualItemRendererProps> = ({ item }) 
   const isForceps = item.brandKey === "med_forceps" || item.brandKey === "brand_a";
   const isScissors = item.brandKey === "med_scissors" || item.brandKey === "brand_b";
   const isVial = item.brandKey === "med_vial" || item.brandKey === "brand_d";
+  const isCotton = item.brandKey === "med_cotton" || item.brandKey === "cotton";
 
   const yTranslate = item.yOffset || 0;
   const opacity = item.opacity ?? 1;
@@ -178,6 +179,16 @@ export const VisualItemRenderer: React.FC<VisualItemRendererProps> = ({ item }) 
 
             {/* Vệt phản quang khúc xạ thủy tinh */}
             <div className="pointer-events-none absolute inset-y-1 right-0.5 w-0.5 rounded-full bg-white/70" />
+          </div>
+        </div>
+      )}
+
+      {/* 5. MẪU BÔNG GÒN / GẠC Y TẾ (Medical Cotton / Gauze Swab) */}
+      {isCotton && (
+        <div className="sample-cotton relative flex h-14 w-10 flex-col items-center justify-center p-0.5 filter drop-shadow-md select-none">
+          <div className="relative flex h-10 w-9 items-center justify-center rounded-xl border border-pink-300/70 bg-gradient-to-br from-white via-pink-50 to-rose-100 shadow-inner">
+            <div className="h-5 w-5 rounded-full bg-white/90 border border-pink-200/80 shadow-xs" />
+            <span className="absolute bottom-0.5 text-[6px] font-mono font-bold text-pink-600">COTTON</span>
           </div>
         </div>
       )}
